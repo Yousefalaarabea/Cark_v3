@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
-# import environ
+import environ
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,9 +22,9 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 
-# env = environ.Env()
-# if os.path.exists(os.path.join(BASE_DIR, '.env')):
-#     environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+env = environ.Env()
+if os.path.exists(os.path.join(BASE_DIR, '.env')):
+    environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 
@@ -126,32 +126,32 @@ WSGI_APPLICATION = 'cark_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cark',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': env('DB_NAME'),
-#         'USER': env('DB_USER'),
-#         'PASSWORD': env('DB_PASSWORD'),
-#         'HOST': env('DB_HOST'),
+#         'NAME': 'cark',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
 #         'PORT': '3306',
-#         'OPTIONS': {
-#             'ssl': {
-#                 'ca': os.path.join(BASE_DIR,'cark_backend',  'DigiCertGlobalRootCA.crt.pem'),
-#             }
-#         }
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {
+                'ca': os.path.join(BASE_DIR,'cark_backend',  'DigiCertGlobalRootCA.crt.pem'),
+            }
+        }
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
