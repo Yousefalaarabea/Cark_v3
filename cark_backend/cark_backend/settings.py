@@ -39,7 +39,7 @@ SIMPLE_JWT = {
 
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # المسار الفيزيائي اللي هتتحفظ فيه الملفات المرفوعة
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
